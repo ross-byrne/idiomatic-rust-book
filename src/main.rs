@@ -1,9 +1,7 @@
-use builder_pattern::{Bicycle, BicycleBuilder};
+use builder_pattern::builder_example;
 
 mod builder_pattern;
 
 fn main() {
-    let bike_builder = BicycleBuilder::new();
-
-    println!("builder: {:#?}", bike_builder);
+    builder_example();
 }
