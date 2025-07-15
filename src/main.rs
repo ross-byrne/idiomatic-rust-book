@@ -1,3 +1,9 @@
+use builder_pattern::{Bicycle, BicycleBuilder};
+
+mod builder_pattern;
+
 fn main() {
-    println!("Hello, world!");
+    let bike_builder = BicycleBuilder::new();
+
+    println!("builder: {:#?}", bike_builder);
 }
