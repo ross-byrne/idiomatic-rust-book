@@ -76,4 +76,13 @@ pub fn builder_example() {
         .build();
 
     println!("bike: {:#?}", bike);
+
+    let b2 = BicycleBuilder::new()
+        .with_make("hotsauce")
+        .with_model("dingy")
+        .with_size(69)
+        .with_colour("blue")
+        .build();
+
+    println!("b2: {:#?}", b2);
 }
