@@ -5,4 +5,6 @@ mod linkedlist;
 
 fn main() {
     builder_example();
+
+    linkedlist::linkedlist_example();
 }

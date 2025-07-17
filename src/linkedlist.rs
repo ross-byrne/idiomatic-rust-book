@@ -20,12 +20,38 @@ impl<T> ListItem<T> {
 
 pub struct LinkedList<T> {
     head: ListItemPtr<T>,
+    cur_iter: Option<ListItemPtr<T>>,
 }
 
 impl<T> LinkedList<T> {
     fn new(t: T) -> Self {
         Self {
             head: Rc::new(RefCell::new(ListItem::new(t))),
+            cur_iter: None,
         }
     }
+}
+
+impl<T> Iterator for LinkedList<T> {
+    type Item = ListItemPtr<T>;
+
+    fn next(&mut self) -> Option<Self::Item> {
+        match &self.cur_iter.clone() {
+            None => {
+                self.cur_iter = Some(self.head.clone());
+            }
+            Some(ptr) => {
+                self.cur_iter = ptr.borrow().next.clone();
+            }
+        }
+
+        self.cur_iter.clone()
+    }
+}
+
+pub fn linkedlist_example() {
+    let dinosaurs = LinkedList::new("Tyrannosaurus Rex");
+    let last_item = dinosaurs.last().expect("couldn't get the last time");
+
+    println!("list item='{}'", last_item.borrow().data.borrow());
 }
